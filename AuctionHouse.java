@@ -61,9 +61,9 @@ public class AuctionHouse {
         List<Item> itemsAbovePrice = new ArrayList<Item>();
         for (Item item : itemsSoldPrice() > price) {
             itemsAbovePrice.add(item);
-
         }
+        return itemsAbovePrice;
     }
-    return itemsAbovePrice;
-}
 
+
+}
