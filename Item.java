@@ -1,16 +1,22 @@
-import java.util.Date;
-
 public class Item {
 
     private int lotNumber;
     private String nameBuyer;
     private double price;
-    private Date year;
-    private boolean type;
+    private int year;
+    private String type;
+
+    /**
+     * @param lotNumber The unique identifier
+     * @param nameBuyer
+     * @param price
+     * @param year
+     * @param type      (furniture, painting, sculpture)
+     */
 
 
     //Constructor
-    public Item (int lotNumber, String nameBuyer, double price, Date year, boolean type) {
+    public Item(int lotNumber, String nameBuyer, double price, int year, String type) {
 
         this.lotNumber = lotNumber;
         this.nameBuyer = nameBuyer;
@@ -19,6 +25,10 @@ public class Item {
         this.type = type;
 
     }
+
+    /**
+     * @return lot number
+     */
 
     //Getter and Setter to retrieve and update these values
     public int getLotNumber() {
@@ -29,6 +39,10 @@ public class Item {
         this.lotNumber = lotNumber;
     }
 
+    /**
+     * @return name
+     */
+
     public String getNameBuyer() {
         return nameBuyer;
     }
@@ -36,6 +50,10 @@ public class Item {
     public void setNameBuyer(String nameBuyer) {
         this.nameBuyer = nameBuyer;
     }
+
+    /**
+     * @return price
+     */
 
     public double getPrice() {
         return price;
@@ -45,27 +63,31 @@ public class Item {
         this.price = price;
     }
 
-    public Date getYear() {
+    /**
+     * @return year
+     */
+
+    public int getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public void setType(boolean type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public boolean isFurniture() {
-        return type.equalsIgnoreCase("Furniture");
-    }
+    /**
+     * @return
+     */
 
-    public boolean isPainting() {
-        return type.equalsIgnoreCase("Painting");
-    }
-
-    public boolean isSculpture() {
-        return type.equalsIgnore("Sculpture");
+    public String getType() {
+        return type;
     }
 }
+
+
+
+

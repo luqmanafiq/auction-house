@@ -4,13 +4,19 @@ import java.util.List;
 public class AuctionHouse {
 
     private String name;
-    private List<Item> itemsSold;
+    private List<Item> items;
+
+
+    /**
+     * create new auction house object
+     *
+     * @param name of auction house
+     */
 
     //Constructor
     public AuctionHouse(String name) {
         this.name = name;
-        this.itemsSold = new ArrayList<Item>();
-
+        this.items = new ArrayList<Item>();
     }
 
     //Getter and Setter
@@ -22,31 +28,39 @@ public class AuctionHouse {
         return name;
     }
 
-    public List<Item> getItemsSold() {
-        return itemsSold;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setItemsSold(List<Item> itemsSold) {
-        this.itemsSold = itemsSold;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
+
+    /**
+     * @return
+     */
+
     //Method for highest price
     public Item GetHighestPriceItem() {
         Item highestPriceItem = null;
-        for (Item item : itemsSold) {
-            if (highestPriceItem == null || item.getSoldPrice() > highestPriceItem.getSoldPrice()) {
+
+
+        for (Item item : items) {
+            if (highestPriceItem == null || item.getPrice() > highestPriceItem.getPrice()) {
                 highestPriceItem = item;
             }
         }
         return highestPriceItem;
 
     }
+
     //Method for average price
     public double getAveragePriceByYear(int year) {
         double totalPrice = 0;
         int itemCount = 0;
-        for (Item item : itemsSold) {
-            if (item.getSoldYear() == year) {
-                totalPrice += item.getSoldPrice();
+        for (Item item : items) {
+            if (item.getYear() == year) {
+                totalPrice += item.getPrice();
                 itemCount++;
             }
         }
@@ -56,14 +70,18 @@ public class AuctionHouse {
             return 0;
         }
     }
+
     //Method for items sold with greater price than given
     public List<Item> getItemsSoldAbovePrice(double price) {
         List<Item> itemsAbovePrice = new ArrayList<Item>();
-        for (Item item : itemsSoldPrice() > price) {
-            itemsAbovePrice.add(item);
+        for (Item item : items) {
+            if (item.getPrice() > price) {
+                itemsAbovePrice.add(item);
+            }
+            return itemsAbovePrice;
         }
-        return itemsAbovePrice;
     }
 
-
+    private Item[] itemsAbovePrice() {
+    }
 }

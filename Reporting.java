@@ -1,50 +1,93 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ *
+ *
+ */
 public class Reporting {
+
     private List<AuctionHouse> auctionHouses;
 
-    //constructor
+    /**
+     * Constructor
+     */
     public Reporting() {
         auctionHouses = new ArrayList<>();
     }
 
-    //method to return the item with the largest price ever recorded
-    public Item getLargestPriceItem() {
-        Item maxPriceItem = null;
-        double maxPrice = 0.0;
+    /**
+     *
+     *
+     * @param auctionHouse
+     */
+    public void addAuctionHouse(AuctionHouse auctionHouse) {
+        auctionHouses.add(auctionHouse);
+    }
 
-        for (AuctionHouse ah : auctionHouses) { //iterate through list of auction houses
-            for (Item item : ah.getItems()) { //iterate through list of items
-                double itemPrice = item.getPrice();
-                if (itemPrice > maxPrice) {
-                    maxPriceItem = item;
-                    maxPrice = itemPrice;
+    /**
+     *
+     *
+     * @return item largest price
+     */
+    public Item getLargestPriceItem() {
+        Item largestPriceItem = null;
+        double maxPrice = 0;
+        for (AuctionHouse auctionHouse : auctionHouses) {
+            for (Item item : auctionHouse.getItems()) {
+                if (item.getPrice() > maxPrice) {
+                    largestPriceItem = item;
+                    maxPrice = item.getPrice();
                 }
             }
         }
-        return maxPriceItem;
+        return largestPriceItem;
     }
 
-    //method to return the auction house with the largest average price for a given year
-    public AuctionHouse getLargestAveragePriceAuctionHouse(int year) {
-        AuctionHouse largestPriceAH = null;
-        double maxAvgPrice = 0.0;
-
-        for (AuctionHouse ah : auctionHouses) { //iterate through list of auction houses
-            double ahPriceTotal = 0.0;
+    /**
+     *
+     * @param year
+     * @return the auction house
+     */
+    public AuctionHouse getAuctionHouseWithLargestAveragePrice(int year) {
+        AuctionHouse largestAveragePriceAuctionHouse = null;
+        double maxAvgPrice = 0;
+        for (AuctionHouse auctionHouse : auctionHouses) {
+            double sum = 0;
             int count = 0;
-            for (Item item : ah.getItems()) { //iterate through list of items
+            for (Item item : auctionHouse.getItems()) {
                 if (item.getYear() == year) {
-                    ahPriceTotal += item.getPrice();
+                    sum += item.getPrice();
                     count++;
                 }
             }
-            double ahAvgPrice = ahPriceTotal / count;
-            if (ahAvgPrice > maxAvgPrice) {
-                largestPriceAH = ah;
-                maxAvgPrice = ahAvgPrice;
+            if (count > 0) {
+                double avgPrice = sum / count;
+                if (avgPrice > maxAvgPrice) {
+                    largestAveragePriceAuctionHouse = auctionHouse;
+                    maxAvgPrice = avgPrice;
+                }
             }
         }
+        return largestAveragePriceAuctionHouse;
+    }
+
+    /**
+     * Returns a list of all items sold with a price greater than the given amount of money.
+     *
+     * @param amount the minimum price of the items to be included in the list
+     * @return a list of all items sold with a price greater than the given amount of money
+     */
+    public List<Item> getItemsWithPriceGreaterThan(double amount) {
+        List<Item> items = new ArrayList<>();
+        for (AuctionHouse auctionHouse : auctionHouses) {
+            for (Item item : auctionHouse.getItems()) {
+                if (item.getPrice() > amount) {
+                    items.add(item);
+                }
+            }
+        }
+        return items;
     }
 }
