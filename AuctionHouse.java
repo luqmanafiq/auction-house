@@ -78,10 +78,7 @@ public class AuctionHouse {
             if (item.getPrice() > price) {
                 itemsAbovePrice.add(item);
             }
-            return itemsAbovePrice;
-        }
-    }
 
-    private Item[] itemsAbovePrice() {
+        }return itemsAbovePrice;
     }
 }
