@@ -43,8 +43,6 @@ public class AuctionHouse {
     //Method for highest price
     public Item GetHighestPriceItem() {
         Item highestPriceItem = null;
-
-
         for (Item item : items) {
             if (highestPriceItem == null || item.getPrice() > highestPriceItem.getPrice()) {
                 highestPriceItem = item;
@@ -80,5 +78,8 @@ public class AuctionHouse {
             }
 
         }return itemsAbovePrice;
+    }
+
+    public void addItem(Item item) {
     }
 }
