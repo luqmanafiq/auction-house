@@ -49,7 +49,6 @@ public class AuctionHouse {
             }
         }
         return highestPriceItem;
-
     }
 
     //Method for average price

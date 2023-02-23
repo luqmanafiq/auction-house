@@ -42,9 +42,9 @@ public class ReportingIO {
                     System.out.println("Item added to auction house: " + item);
                     break;
                 case 3:
-                    // provide statistics on auction house with largest average item price for a given
-                    //year, highest price item ever reported (including all its details), and all items sold with a
-                    //price greater than a given amount (including all their details);
+                    /* provide statistics on auction house with largest average item price for a given
+                    year, highest price item ever reported (including all its details), and all items sold with a
+                    price greater than a given amount (including all their details);*/
                     System.out.println("Select an option:");
                     System.out.println("1. Auction house with largest average item price for a given year");
                     System.out.println("2. Highest price item ever reported (including all its details)");
@@ -66,10 +66,30 @@ public class ReportingIO {
                             break;
                         case 2:
                             showHighestPriceItemEver(scanner);
+                            System.out.println("Enter year:");
+                            year = scanner.nextInt();
+                            scanner.nextLine();
+
+                            if (auctionHouse != null) {
+                                System.out.println("Highest Item Price Ever in " + year + " is:");
+                                System.out.println(auctionHouse);
+                            }else {
+                                System.out.println("No Highest price found for year " + year);
+                            }
                             break;
 
                         case 3:
                             itemsSoldWithPriceGreaterThanGivenAmount(scanner);
+                            System.out.println("Enter year:");
+                            year = scanner.nextInt();
+                            scanner.nextLine();
+
+                            if (auctionHouse != null) {
+                                System.out.println("Item Sold With Price Greater Than Given Amount " + year + " is:");
+                                System.out.println(auctionHouse);
+                            }else {
+                                System.out.println("No Item sold with price greater than for year " + year);
+                            }
                             break;
                         case 4:
                             // exit the program

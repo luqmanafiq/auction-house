@@ -52,7 +52,7 @@ public class Reporting {
      */
     public AuctionHouse getAuctionHouseWithLargestAveragePrice(int year) {
         AuctionHouse largestAveragePriceAuctionHouse = null;
-        double maxAvgPrice = 0;
+        double maxAveragePrice = 0;
         for (AuctionHouse auctionHouse : auctionHouses) {
             double sum = 0;
             int count = 0;
@@ -64,9 +64,10 @@ public class Reporting {
             }
             if (count > 0) {
                 double avgPrice = sum / count;
-                if (avgPrice > maxAvgPrice) {
+                if (avgPrice > maxAveragePrice) {
                     largestAveragePriceAuctionHouse = auctionHouse;
-                    maxAvgPrice = avgPrice;
+                    double averagePrice = 0;
+                    maxAveragePrice = averagePrice;
                 }
             }
         }
