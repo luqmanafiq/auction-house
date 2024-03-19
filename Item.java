@@ -23,7 +23,6 @@ public class Item {
         this.price = price;
         this.year = year;
         this.type = type;
-
     }
 
     /**
