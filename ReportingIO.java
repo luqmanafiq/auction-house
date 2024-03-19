@@ -36,6 +36,7 @@ public class ReportingIO {
                     int year = scanner.nextInt();
                     scanner.nextLine(); // consume the newline character
                     System.out.println("Enter item type (furniture, painting, or sculpture):");
+
                     String itemType = scanner.nextLine();
                     Item item = new Item(lotNumber, buyerName, price, year, itemType);
                     auctionHouse.addItem(item);
